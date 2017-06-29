@@ -13,8 +13,8 @@ import java.util.concurrent.Executors;
  */
 public class CompletionServiceTest{
     public static void main(String[] args) throws Exception {
-        ExecutorService executorService = Executors.newCachedThreadPool();
-        CompletionService cs = new ExecutorCompletionService(executorService);
+        ExecutorService es = Executors.newCachedThreadPool();
+        CompletionService cs = new ExecutorCompletionService(es);
 
         cs.submit(() -> {
             Thread.sleep(5000);
@@ -26,11 +26,16 @@ public class CompletionServiceTest{
             return "b complete after 1000 ms";
         });
 
-        System.out.println(cs.poll());
-        System.out.println(cs.take().get());
-        System.out.println(cs.take().get());
-        System.out.println(cs.poll());
+        es.shutdown();
 
-        executorService.shutdown();
+        while (!es.isTerminated()){
+            System.out.println(cs.take().get());
+        }
+
+        /*System.out.println(cs.poll());
+        System.out.println(cs.take().get());
+        System.out.println(cs.take().get());
+        System.out.println(cs.poll());*/
+
     }
 }
