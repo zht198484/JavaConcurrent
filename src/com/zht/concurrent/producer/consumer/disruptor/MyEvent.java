@@ -2,7 +2,7 @@ package com.zht.concurrent.producer.consumer.disruptor;
 
 
 public class MyEvent {
-	
+
 	private String id;
 	private String name;
 

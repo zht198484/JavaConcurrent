@@ -8,11 +8,11 @@ import com.lmax.disruptor.RingBuffer;
 class Producer {
 
 	private final RingBuffer<MyEvent> ringBuffer;
-	
+
 	Producer(RingBuffer<MyEvent> ringBuffer){
 		this.ringBuffer = ringBuffer;
 	}
-	
+
 	void produceData(String data){
 		long sequence = ringBuffer.next();
 		try {
@@ -22,6 +22,6 @@ class Producer {
 			ringBuffer.publish(sequence);
 		}
 	}
-	
-	
+
+
 }
