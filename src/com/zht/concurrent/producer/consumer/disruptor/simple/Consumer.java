@@ -1,8 +1,9 @@
-package com.zht.concurrent.producer.consumer.disruptor;
+package com.zht.concurrent.producer.consumer.disruptor.simple;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
 import com.lmax.disruptor.WorkHandler;
+import com.zht.concurrent.producer.consumer.disruptor.MyEvent;
 
 public class Consumer implements WorkHandler<MyEvent>{
 

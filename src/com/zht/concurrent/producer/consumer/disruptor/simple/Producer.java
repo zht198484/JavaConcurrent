@@ -1,6 +1,7 @@
-package com.zht.concurrent.producer.consumer.disruptor;
+package com.zht.concurrent.producer.consumer.disruptor.simple;
 
 import com.lmax.disruptor.RingBuffer;
+import com.zht.concurrent.producer.consumer.disruptor.MyEvent;
 
 /**
  * producer to produce order

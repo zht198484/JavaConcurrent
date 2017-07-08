@@ -5,12 +5,13 @@ public class MyEvent {
 
 	private String id;
 	private String name;
+	private double price;
 
-	String getId() {
+	public String getId() {
 		return id;
 	}
 
-	void setId(String id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
@@ -22,4 +23,11 @@ public class MyEvent {
 		this.name = name;
 	}
 
+	public void setPrice(double v) {
+		this.price = v;
+	}
+
+	public double getPrice() {
+		return this.price;
+	}
 }

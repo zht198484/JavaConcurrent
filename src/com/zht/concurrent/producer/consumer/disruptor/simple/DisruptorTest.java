@@ -1,7 +1,8 @@
-package com.zht.concurrent.producer.consumer.disruptor;
+package com.zht.concurrent.producer.consumer.disruptor.simple;
 
 import com.lmax.disruptor.*;
 import com.lmax.disruptor.dsl.ProducerType;
+import com.zht.concurrent.producer.consumer.disruptor.MyEvent;
 
 import java.util.UUID;
 import java.util.concurrent.CountDownLatch;
