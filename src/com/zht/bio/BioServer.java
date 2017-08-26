@@ -14,12 +14,12 @@ public class BioServer {
         try (ServerSocket serverSocket = new ServerSocket(port)) {
             System.out.println("Bio server is started at port " + port);
             while (true) {
-                Socket socket = serverSocket.accept();
-                Thread thread = new Thread(new BioServerHandler(socket));
-                thread.start();
                 try {
-                    thread.join();
-                } catch (InterruptedException e) {
+                    try (Socket socket = serverSocket.accept()) {
+                        Thread thread = new Thread(new BioServerHandler(socket));
+                        thread.start();
+                    }
+                } catch (IOException e) {
                     e.printStackTrace();
                     break;
                 }
