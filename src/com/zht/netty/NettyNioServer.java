@@ -1,9 +1,9 @@
 package com.zht.netty;
 
 import io.netty.bootstrap.ServerBootstrap;
-import io.netty.channel.*;
+import io.netty.channel.ChannelFuture;
+import io.netty.channel.ChannelOption;
 import io.netty.channel.nio.NioEventLoopGroup;
-import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 
 /**
@@ -11,7 +11,7 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
  * Nio server by netty
  */
 public class NettyNioServer {
-    public void bind(int port) throws InterruptedException {
+    private void bind() throws InterruptedException {
         NioEventLoopGroup bossGroup = new NioEventLoopGroup();
         NioEventLoopGroup workerGroup = new NioEventLoopGroup();
         try {
@@ -19,20 +19,16 @@ public class NettyNioServer {
             serverBootstrap.group(bossGroup, workerGroup)
                     .channel(NioServerSocketChannel.class)
                     .option(ChannelOption.SO_BACKLOG, 1024)
-                    .childHandler(new ChannelInitializer<SocketChannel>() {
-
-                        @Override
-                        protected void initChannel(SocketChannel ch) throws Exception {
-                            ChannelPipeline pipeline = ch.pipeline();
-
-                            pipeline.addLast(new NettyNioServerHandler());
-                        }
-                    });
-            ChannelFuture channelFuture = serverBootstrap.bind(port).sync();
+                    .childHandler(new HelloInitializer(new NettyNioServerHandler()));
+            ChannelFuture channelFuture = serverBootstrap.bind(8082).sync();
             channelFuture.channel().closeFuture().sync();
         } finally {
             bossGroup.shutdownGracefully();
             workerGroup.shutdownGracefully();
         }
+    }
+
+    public static void main(String[] args) throws InterruptedException {
+        new NettyNioServer().bind();
     }
 }
