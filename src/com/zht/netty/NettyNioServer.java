@@ -21,7 +21,9 @@ public class NettyNioServer {
                     .option(ChannelOption.SO_BACKLOG, 1024)
                     .childHandler(new HelloInitializer(new NettyNioServerHandler()));
             ChannelFuture channelFuture = serverBootstrap.bind(8082).sync();
+            System.out.println("Server is started!");
             channelFuture.channel().closeFuture().sync();
+            System.out.println("Server is closed!");
         } finally {
             bossGroup.shutdownGracefully();
             workerGroup.shutdownGracefully();
