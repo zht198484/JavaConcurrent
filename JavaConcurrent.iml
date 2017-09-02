@@ -9,5 +9,6 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="disruptor-3.3.2" level="project" />
     <orderEntry type="library" name="netty-all-4.1.15.Final" level="project" />
+    <orderEntry type="library" name="javassist-3.18.1-GA" level="project" />
   </component>
 </module>
