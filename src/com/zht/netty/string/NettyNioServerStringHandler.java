@@ -11,7 +11,7 @@ import java.net.InetAddress;
  * netty nio server handler
  */
 @Sharable
-class NettyNioServerStringHandler extends SimpleChannelInboundHandler<String> {
+public class NettyNioServerStringHandler extends SimpleChannelInboundHandler<String> {
 
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, String msg) throws Exception {

@@ -9,7 +9,7 @@ import io.netty.channel.SimpleChannelInboundHandler;
  * netty nio server handler
  */
 @Sharable
-class NettyNioClientStringHandler extends SimpleChannelInboundHandler<String> {
+public class NettyNioClientStringHandler extends SimpleChannelInboundHandler<String> {
 
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, String msg) throws Exception {
