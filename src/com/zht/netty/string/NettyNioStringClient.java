@@ -2,7 +2,6 @@ package com.zht.netty.string;
 
 import com.zht.netty.NettyNioClient;
 import io.netty.channel.ChannelHandler;
-import io.netty.handler.codec.LineBasedFrameDecoder;
 import io.netty.handler.codec.string.StringDecoder;
 import io.netty.handler.codec.string.StringEncoder;
 
@@ -18,7 +17,7 @@ public class NettyNioStringClient {
 
 //        handlerMap.put("framer", new DelimiterBasedFrameDecoder(8192, Delimiters.lineDelimiter()));
 //        handlerMap.put("framer", new FixedLengthFrameDecoder(8192));
-        handlerMap.put("framer", new LineBasedFrameDecoder(8192));
+//        handlerMap.put("framer", new LineBasedFrameDecoder(8192));
         handlerMap.put("decoder", new StringDecoder());
         handlerMap.put("encoder", new StringEncoder());
         handlerMap.put("handler", new NettyNioClientStringHandler());

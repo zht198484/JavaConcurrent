@@ -14,7 +14,6 @@ import java.util.Map;
  */
 public class HelloInitializer extends ChannelInitializer<SocketChannel> {
     private LinkedHashMap<String, ChannelHandler> handlerMap;
-    private volatile boolean initialized = false;
 
     HelloInitializer(LinkedHashMap<String, ChannelHandler> handlerMap) {
         this.handlerMap = handlerMap;
@@ -23,11 +22,8 @@ public class HelloInitializer extends ChannelInitializer<SocketChannel> {
     @Override
     protected void initChannel(SocketChannel ch) throws Exception {
         ChannelPipeline pipeline = ch.pipeline();
-        if (!initialized) {
-            for (Map.Entry<String, ChannelHandler> channelHandlerEntry : handlerMap.entrySet()) {
-                pipeline.addLast(channelHandlerEntry.getKey(), channelHandlerEntry.getValue());
-            }
-            initialized = true;
+        for (Map.Entry<String, ChannelHandler> channelHandlerEntry : handlerMap.entrySet()) {
+            pipeline.addLast(channelHandlerEntry.getKey(), channelHandlerEntry.getValue());
         }
     }
 }

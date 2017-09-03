@@ -1,5 +1,6 @@
 package com.zht.netty.string;
 
+import io.netty.channel.ChannelHandler.Sharable;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 
@@ -9,6 +10,7 @@ import java.net.InetAddress;
  * Created by zht198484 on 2017/8/30.
  * netty nio server handler
  */
+@Sharable
 class NettyNioServerStringHandler extends SimpleChannelInboundHandler<String> {
 
     @Override

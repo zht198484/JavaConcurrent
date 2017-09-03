@@ -27,8 +27,8 @@ public class NettyNioClient {
                     .channel(NioSocketChannel.class)
                     .handler(new HelloInitializer(handlerMap));
             Channel channel = bootstrap.connect("127.0.0.1", 8082).sync().channel();
-            channel.writeAndFlush("send client request\n");
-            Thread.sleep(10000);
+//            channel.writeAndFlush("send client request\n");
+            channel.closeFuture().sync();
 
         } finally {
             eventLoopGroup.shutdownGracefully();
